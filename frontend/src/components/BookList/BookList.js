@@ -6,12 +6,12 @@ const BookList = () => {
   return (
     <div className="app-block book-list">
       <h2>BookList</h2>
-      {books.list === 0 ? (
+      {books.length === 0 ? (
         <p>No books</p>
       ) : (
         <ul>
           {books.map((book, i) => (
-            <li key={i}>
+            <li key={book.id}>
               <div className="book-info">
                 {++i}. {book.title} by <strong>{book.author}</strong>
               </div>
