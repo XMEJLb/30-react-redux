@@ -9,6 +9,11 @@ function booksReducer(state = initialState, action) {
     case a.DELETE_BOOK:
       return state.filter((e) => action.payload !== e.id);
 
+    case a.CHANGE_BOOKMARK:
+      return state.map((e) =>
+        action.payload === e.id ? { ...e, favorite: !e.favorite } : e
+      );
+
     default:
       return state;
   }

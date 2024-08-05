@@ -13,3 +13,10 @@ export const deleteBook = (bookId) => {
     payload: bookId,
   };
 };
+
+export const changeBookmark = (bookId) => {
+  return {
+    type: a.CHANGE_BOOKMARK,
+    payload: bookId,
+  };
+};

@@ -15,6 +15,7 @@ const BookForm = () => {
     const book = {
       title: data.title,
       author: data.author,
+      favorite: false,
       id: uuidv4(),
     };
     dispatch(addBook(book));
@@ -25,6 +26,7 @@ const BookForm = () => {
       const book = {
         title,
         author,
+        favorite: false,
         id: uuidv4(),
       };
       dispatch(addBook(book));
