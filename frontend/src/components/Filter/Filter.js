@@ -1,6 +1,8 @@
 import {
   setTitleFilter,
   selectTitleFiter,
+  setAuthorFilter,
+  selectAuthorFilter,
 } from "../../redux/slices/filterSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -14,17 +16,32 @@ const Filter = () => {
   };
   const clearTitleFilterChange = () => {
     dispatch(setTitleFilter(""));
+    dispatch(setAuthorFilter(""));
+  };
+  const authorFilter = useSelector(selectAuthorFilter);
+  const handleAuthorFilterChange = (e) => {
+    dispatch(setAuthorFilter(e.target.value));
   };
 
   return (
     <div className="app-block filter">
-      <div className="filter-group">
-        <input
-          type="text"
-          value={titleFilter}
-          placeholder="Filter by title"
-          onChange={handleTitleFilterChange}
-        />
+      <div className="filter-row">
+        <div className="filter-group">
+          <input
+            type="text"
+            value={titleFilter}
+            placeholder="Filter by title"
+            onChange={handleTitleFilterChange}
+          />
+        </div>
+        <div className="filter-group">
+          <input
+            type="text"
+            value={authorFilter}
+            placeholder="Filter by author"
+            onChange={handleAuthorFilterChange}
+          />
+        </div>
         <button onClick={() => clearTitleFilterChange()}>Clear</button>
       </div>
     </div>
