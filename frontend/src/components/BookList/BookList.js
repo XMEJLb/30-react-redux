@@ -32,6 +32,21 @@ const BookList = () => {
     dispatch(changeBookmark(id));
   };
 
+  const highliteMatch = (text, filter) => {
+    if (!filter) return text;
+    const regex = new RegExp(`(${filter})`, "gi");
+    return text.split(regex).map((substirng, i) => {
+      if (substirng.toLowerCase() === filter.toLowerCase()) {
+        return (
+          <span key={i} className="highlight">
+            {substirng}
+          </span>
+        );
+      }
+      return substirng;
+    });
+  };
+
   return (
     <div className="app-block book-list">
       <h2>BookList</h2>
@@ -42,7 +57,8 @@ const BookList = () => {
           {filtertedBooks.map((book, i) => (
             <li key={book.id}>
               <div className="book-info">
-                {++i}. {book.title} by <strong>{book.author}</strong>{" "}
+                {++i}. {highliteMatch(book.title, filterTitle)} by{" "}
+                <strong>{highliteMatch(book.author, authorFilter)}</strong>{" "}
               </div>
               <div className="book-actions">
                 <span onClick={() => handleChangeBookmark(book.id)}>

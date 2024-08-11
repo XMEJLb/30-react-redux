@@ -19,7 +19,9 @@ const Filter = () => {
   const clearTitleFilterChange = () => {
     dispatch(setTitleFilter(""));
     dispatch(setAuthorFilter(""));
-    dispatch(setOnlyFavoriteFilter(false));
+    if (onlyFavoriteFilter === true) {
+      dispatch(setOnlyFavoriteFilter());
+    }
   };
   const authorFilter = useSelector(selectAuthorFilter);
   const handleAuthorFilterChange = (e) => {
