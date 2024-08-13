@@ -17,6 +17,7 @@ const BookForm = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (title && author) {
       dispatch(addBook(createBookWithId({ title, author }, "manual")));
       setTitle("");
@@ -27,7 +28,7 @@ const BookForm = () => {
   };
 
   const handleAddRandomViaApi = () => {
-    dispatch(fetchBook());
+    dispatch(fetchBook("http://localhost:4000/random-book"));
   };
 
   return (
